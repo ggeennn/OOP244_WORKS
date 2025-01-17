@@ -18,9 +18,9 @@ read -p "Do you want to submit lab or reflection? (lab/ref): " SUBMISSION_TYPE
 
 # Construct the submission command
 if [[ "$SUBMISSION_TYPE" == "lab" ]]; then
-    COMMAND="~Reza.Khojasteh/submit 2$SUBJECT_CODE/w$WORKSHOP_NUMBER/lab_$SECTION"
+    COMMAND="~reza.khojasteh/submit 2$SUBJECT_CODE/w$WORKSHOP_NUMBER/lab_$SECTION"
 elif [[ "$SUBMISSION_TYPE" == "ref" ]]; then
-    COMMAND="~Reza.Khojasteh/submit 2$SUBJECT_CODE/w$WORKSHOP_NUMBER/ref_$SECTION"
+    COMMAND="~reza.khojasteh/submit 2$SUBJECT_CODE/w$WORKSHOP_NUMBER/ref_$SECTION"
 else
     echo "Invalid submission type. Please enter 'lab' or 'ref'."
     exit 1
