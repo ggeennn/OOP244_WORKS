@@ -1,1 +1,22 @@
 .vscode
+.vs/
+
+# 忽略 Visual Studio 配置文件
+Debug/
+x64/
+*.tlog
+*.lastbuildstate
+*.user
+*.pdb
+*.idb
+*.obj
+*.sdf
+*.suo
+*.opensdf
+*.sln.docstates
+lab/lab/
+
+# 保留项目文件
+!*.vcxproj
+!*.sln
+!*.vcxproj.filters

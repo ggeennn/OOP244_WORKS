@@ -6,6 +6,8 @@ namespace seneca {
    /// </summary>
    /// <returns>The integer read from the console</returns>
    int getInt();
+   int getInt(int, int);
+   bool getInt(int&, int, int);
 
    /// <summary>
    /// Performs a foolproof integer entry from the console with an upper and lower acceptable limit.

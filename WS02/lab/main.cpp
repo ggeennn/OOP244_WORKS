@@ -61,6 +61,6 @@ void test_Contact(){
    display(*cptr);
    setEmpty(*cptr);
    display(*cptr);
-   deallocate(cptr);
+   dellocate(cptr);
 }
 
