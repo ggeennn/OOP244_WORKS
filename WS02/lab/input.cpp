@@ -1,3 +1,10 @@
+/**
+ * I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+ * Name :	Yicheng Wang
+ * Email :	ywang841@myseneca.ca
+ * Student ID :	150868206
+ * Date :	2025/1/10
+ */
 #include <iostream>
 #include "input.h"
 using namespace std;

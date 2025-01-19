@@ -8,12 +8,13 @@ if [ $? -eq 0 ]; then
     echo "Compilation successful, running the program..."
     
     # Run the program and use valgrind to check for memory leaks
-    valgrind --show-error-list=yes --leak-check=full --show-leak-kinds=all --track-origins=yes ws | tee program_output.txt
+    # Start recording the session, redirecting valgrind output to a log file and ensuring only ws interaction is captured in program_output.txt
+    script -q -c "valgrind --show-error-list=yes --leak-check=full --show-leak-kinds=all --track-origins=yes ws" program_output.txt
 
     # Check if output.txt exists
-    if [ -f "output.txt" ]; then
+    if [ -f "correct_output.txt" ]; then
         echo "Comparing program output with output.txt..."
-        diff program_output.txt output.txt
+        diff program_output.txt correct_output.txt
         
         # Check if diff found any differences
         if [ $? -eq 0 ]; then
