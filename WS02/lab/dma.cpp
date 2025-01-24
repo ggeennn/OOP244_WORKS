@@ -12,11 +12,11 @@ namespace seneca {
 
 	void reverse() {
 		int num = 0;
-		cout << "Enter the number of double values: " << endl;
+		cout << "Enter the number of double values:" << endl<<"> ";
 		cin >> num;
 		double* doubles = new double[num];
 		for (int i = 0; i < num; i++) {
-			cout << i + 1<<" ";
+			cout << i + 1<<"> ";
 			cin >> doubles[i];
 		}
 		for (int i = 0; i < num; i++) {
@@ -31,16 +31,16 @@ namespace seneca {
         person = new Contact();
         cout << "Name: ";
         cin >> person->m_name;
-        cout << "Last Name: ";
+        cout << "Last name: ";
         cin >> person->m_lastname;
-        cout << "Phone Number: ";
+        cout << "Phone number: ";
         cin >> person->m_phoneNumber;
         return person;
     }
     void display(const Contact& person){
         cout << person.m_name << " " << person.m_lastname << ", +" << person.m_phoneNumber << endl;
     }
-    void dellocate(Contact* person){
+    void deallocate(Contact* person){
         delete person;
         person = nullptr;
     }

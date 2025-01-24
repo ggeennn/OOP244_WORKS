@@ -36,7 +36,7 @@ namespace seneca {
    /// Receives the address of a dynamically allocated Contact and removes it from memory.
    /// </summary>
    /// <param name="C">Contact*: The address of the Contact to be deallocated</param>
-   void dellocate(Contact*);
+   void deallocate(Contact*);
 
    /// <summary>
    /// Empties the content of the Contact received by reference by setting the name and last name to empty strings and the phone number to zero.

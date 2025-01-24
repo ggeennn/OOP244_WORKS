@@ -40,7 +40,7 @@ namespace seneca {
 				cin.clear();
 			}
 			else if (num<minVal || num>maxVal) {
-				cout << "Invalid value, [" << minVal << "<ENTRY<" << maxVal << "]" << endl;
+				cout << "Invalid value, [" << minVal << "<ENTRY<" << maxVal << "]" << endl<<"> ";
 			}
 			else {
 				done = true;

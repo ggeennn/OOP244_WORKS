@@ -35,5 +35,7 @@ namespace seneca {
       cout << expMon << "/" << expYear << " |" << endl;
       cout.unsetf(ios::right);
    }
-
+   
+bool CC::validate(const char* name, unsigned long long cardNo, short cvv, short expMon, short expYear) const {
+}
 }
