@@ -1,5 +1,6 @@
 .vscode
 .vs/
+*.exe
 
 # 忽略 Visual Studio 配置文件
 Debug/

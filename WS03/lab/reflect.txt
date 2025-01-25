@@ -1,0 +1,16 @@
+/**
+ * I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+ * Name :	Yicheng Wang
+ * Email :	ywang841@myseneca.ca
+ * Student ID :	150868206
+ * Date :	2025/1/25
+ */
+Workshop 3 Lab Reflection
+
+In this workshop, I learned about credit card validation system implementation using C++ classes. The main challenges I encountered were:
+
+1. Implementing proper dynamic memory management for the cardholder's name using the provided cstr utility functions
+2. Ensuring all validation rules were correctly applied in the validate() function
+3. Understanding the importance of proper cleanup to prevent memory leaks
+
+The most valuable learning outcome was understanding how to use class encapsulation to maintain data integrity and how to properly handle dynamic memory allocation in C++.
