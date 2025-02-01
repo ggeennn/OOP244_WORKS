@@ -1,0 +1,55 @@
+Workshop 4: Constructors Destructors and Current object 的代码状态分析
+
+已提供的代码文件：
+1. cstr.h & cstr.cpp
+   - 完整实现了C-string相关的工具函数
+   - 包括内存管理、字符串操作等基础功能
+
+2. main.cpp
+   - 完整的测试程序
+   - 展示了Canister类的预期使用方式和功能测试
+
+3. Canister.h & Canister.cpp (部分实现)
+已实现的部分：
+- 私有成员变量:
+  - m_contentName (char*)
+  - m_diameter (double)
+  - m_height (double)
+  - m_contentVolume (double)
+- 私有成员函数:
+  - setToUnusable()
+  - isEmpty()
+  - usable()
+  - hasSameContent()
+  - capacity()
+  - volume()
+- 公有成员函数:
+  - display()
+
+需要实现的部分：
+1. 构造函数（Constructors）:
+   - 默认构造函数
+   - 带content name的构造函数
+   - 带height, diameter, content name的构造函数
+
+2. 析构函数（Destructor）:
+   - 处理动态内存管理
+
+3. 公有成员函数:
+   - clear()
+   - setContent()
+   - pour(double)
+   - pour(Canister&)
+
+学习重点：
+1. 构造函数和析构函数的概念与实现
+2. 动态内存管理
+3. 当前对象引用(this)的使用
+4. 类的封装和接口设计
+5. 参数传递和返回值的处理
+
+这个workshop主要考察：
+1. 面向对象编程的基本概念
+2. 构造函数和析构函数的使用
+3. 动态内存管理
+4. 类的设计与实现 
