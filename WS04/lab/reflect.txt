@@ -1,0 +1,24 @@
+Workshop 4 Reflection
+Name: Yicheng Wang
+Student ID: 150868206 
+
+This workshop helped me understand several key OOP concepts:
+
+1. Constructor and Destructor Implementation:
+- Learned how to create multiple constructors with different parameters
+- Understood the importance of proper memory management through destructors
+
+2. Dynamic Memory Management:
+- Practiced allocating and deallocating memory for char* content names
+- Used helper functions like alocpy() and freeMem() to manage memory safely
+
+3. Current Object Reference:
+- Implemented methods returning *this for method chaining
+- Understood how to maintain object state through member functions
+
+4. Class Design:
+- Learned to implement validation logic for object states (usable/unusable)
+- Practiced encapsulation by using private helper methods
+
+The most challenging part was implementing the pour() methods correctly while maintaining object states and handling content validation.
+

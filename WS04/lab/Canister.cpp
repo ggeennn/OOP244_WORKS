@@ -1,3 +1,10 @@
+/**
+ * I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+ * Name :	Yicheng Wang
+ * Email :	ywang841@myseneca.ca
+ * Student ID :	150868206
+ * Date :	2025/2/2
+ */
 #include <istream>
 #include "cstr.h"  
 #include "Canister.h"
@@ -60,20 +67,15 @@ namespace seneca {
 		m_contentVolume = 0.0;
 	}
 
-	Canister::Canister(const char* contentName):Canister() {
+	Canister::Canister(const char* contentName) :Canister() {
 		alocpy(m_contentName, contentName);
 	}
 
-	Canister::Canister(double height, double diameter, const char* contentName):Canister() {
+	Canister::Canister(double height, double diameter, const char* contentName) :Canister() {
 		m_height = height;
 		m_diameter = diameter;
 		if (usable()) {
 			alocpy(m_contentName, contentName);
-		}
-		else {
-			setToUnusable();
-			m_height = height;
-			m_diameter = diameter;
 		}
 	}
 
@@ -87,7 +89,6 @@ namespace seneca {
 		return *this;
 	}
 
-	//Use the usable, isEmpty, alocpy, hasSameContent, and setToUnusable functions
 	Canister& Canister::setContent(const char* contentName) {
 		if (contentName && usable()) {
 			if (!m_contentName || isEmpty()) {
@@ -100,36 +101,32 @@ namespace seneca {
 		return *this;
 	}
 
-	//Use the usable, volume, capacity, and setToUnusable methods 
 	Canister& Canister::pour(double quantity) {
 		if (usable()) {
 			if (quantity > 0 && quantity + volume() <= capacity()) {
 				m_contentVolume += quantity;
 			}
 			else {
-
 				setToUnusable();
 			}
 		}
 		return *this;
 	}
 
-	//use usable, volume, capacity, pour(double) and setContent
 	Canister& Canister::pour(Canister& can) {
-		
+
 		if (usable()) {
-			
-			if (can.volume() > capacity() - volume()) {
-				can.m_contentVolume -= capacity() - volume();
-				m_contentVolume = capacity();
+			double toFull = capacity() - volume();
+			if (can.volume() > toFull) {
+				pour(toFull);
+				can.m_contentVolume -= toFull;
 			}
 			else {
-				m_contentVolume += can.volume();
+				pour(can.m_contentVolume);
 				can.m_contentVolume = 0.0;
 			}
 			setContent(can.m_contentName);
 		}
-		
 		return *this;
 	}
 }
