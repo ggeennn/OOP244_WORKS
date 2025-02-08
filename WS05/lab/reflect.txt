@@ -1,0 +1,23 @@
+Workshop 5 Reflection
+Name: Yicheng Wang
+Student ID: 150868206 
+
+This workshop helped me understand several key OOP concepts:
+
+1. Operator Overloading Implementation:
+- Learned how to implement different types of operators (unary, binary, conversion)
+- Understood the importance of const member functions and reference parameters
+
+2. Type Conversion Operators:
+- Implemented bool, int, and double conversion operators
+- Practiced proper validation and state checking in conversions
+
+3. Member vs Helper Functions:
+- Learned the difference between member and non-member operator overloading
+- Understood when to use friend functions for binary operations
+
+4. Account Class Design:
+- Implemented validation for different account states (valid/invalid/new)
+- Practiced safe fund transfer operations between accounts
+
+The most challenging part was implementing the fund transfer operators (>> and <<) while ensuring proper validation and state management of both accounts involved. 
