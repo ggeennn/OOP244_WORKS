@@ -1,0 +1,44 @@
+Pre-Reflection Summary for Workshop 6
+
+1. 已提供的代码文件:
+- Numbers.h (部分实现)
+- Numbers_prof.cpp (完整实现,不可修改)
+- main.cpp (完整实现,测试程序)
+
+2. 需要完成的代码文件:
+- Numbers.cpp (需要完整实现)
+- Numbers.h (需要完善)
+
+3. 主要学习目标:
+- 深入理解和实现 Copy Constructor(拷贝构造函数)
+- 深入理解和实现 Copy Assignment(拷贝赋值运算符)
+- 学习如何安全地调整动态分配内存的大小(Memory Resizing)
+- 重载输入输出运算符(<<和>>)以支持流操作
+- 文件读写操作
+
+4. 需要实现的关键函数:
+Numbers.cpp中:
+- Destructor(析构函数)
+- Copy Constructor 
+- Copy Assignment Operator
+- numberCount() - 计算文件中数字的数量
+- load() - 从文件读取数据
+- save() - 保存数据到文件
+- operator+= - 添加新数字并重新分配内存
+- display() - 格式化显示数据
+- operator<< 和 operator>> 的helper functions
+
+5. 重要概念:
+- Rule of Three(三法则):当一个类需要自定义析构函数时,通常也需要自定义拷贝构造函数和拷贝赋值运算符
+- Dynamic Memory Management(动态内存管理)
+- Memory Resizing(内存大小调整)
+- File I/O Operations(文件输入输出操作)
+- Operator Overloading(运算符重载)
+
+6. 关键要求:
+- 所有动态内存操作必须安全,不能有内存泄漏
+- 文件操作必须正确处理
+- 数据显示必须符合指定格式
+- 拷贝操作必须正确复制所有数据
+
+这个workshop主要考察了C++面向对象编程中的重要概念,特别是内存管理和资源处理。完成后应该能更好地理解为什么需要自定义拷贝操作,以及如何安全地管理动态内存。
