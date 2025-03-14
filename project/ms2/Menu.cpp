@@ -19,7 +19,6 @@ who gave it to you, or from what source you acquired it.
 #include <iostream> 
 #include "Menu.h"
 #include "Utils.h" 
-#include "constants.h"
 
 namespace seneca {
     MenuItem::MenuItem(const char* content, size_t indentation, size_t indentationSize, int rowNumber)
@@ -71,9 +70,55 @@ namespace seneca {
 
         return ostr;
     }
-
+    
     std::ostream& operator<<(std::ostream& ostr, const MenuItem& item) {
         item.display(ostr);
         return ostr;
+    }
+
+    Menu::Menu(const char* title, const char* exitText, size_t indent, size_t indentSize) 
+        : m_title(title, indent, indentSize, -1), 
+          m_exit(exitText, indent, indentSize, 0),
+          m_prompt("> ", indent, indentSize, -1),
+          m_indent(indent),
+          m_indentSize(indentSize) {}
+
+
+    Menu::~Menu() {
+        for (size_t i = 0; i < m_count; ++i) {
+            delete m_items[i];
+            m_items[i] = nullptr;
+        }
+    }
+
+    Menu& Menu::operator<<(const char* item) {
+        if (m_count < MaximumNumberOfMenuItems && item && item[0] != '\0') {
+            m_items[m_count] = new MenuItem(item, m_indent, m_indentSize, m_count + 1);
+            ++m_count;
+        }
+        return *this;
+    }
+
+    size_t Menu::select() const {
+        if (m_title) std::cout << m_title << std::endl;
+        
+        for (size_t i = 0; i < m_count; ++i) {
+            std::cout << *m_items[i] << std::endl;
+        }
+        std::cout << m_exit << std::endl;
+        
+        std::cout << m_prompt;
+        return ut.getInt(0, m_count);
+    }
+
+    Menu::operator bool() const {
+        return m_count > 0;
+    }
+
+    size_t operator<<(std::ostream& os, const Menu& menu) {
+        if (&os == &std::cout) {
+            return menu.select();
+        }
+        return 0;
     }
 }

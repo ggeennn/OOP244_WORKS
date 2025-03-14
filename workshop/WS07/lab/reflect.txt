@@ -1,0 +1,12 @@
+/**
+ * I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+ * Name :	Yicheng Wang
+ * Email :	ywang841@myseneca.ca
+ * Student ID :	150868206
+ * Date :	2025/3/11
+ */
+
+This workshop deepened my understanding of inheritance and custom I/O operators in C++. 
+By creating the Professor class derived from Employee, I learned how to extend base class functionality while adding new attributes like subjectName and numSections. Overriding methods such as read() and write() allowed me to customize input and output behavior, while implementing devPay() introduced me to calculations based on derived class properties. 
+The most challenging part was ensuring proper memory management for dynamically allocated C-strings, but using the Utils module helped simplify this process. This workshop reinforced the importance of careful design in object-oriented programming and improved my ability to work with derived classes and operator overloading. 
+Overall, it was a valuable exercise in building modular and reusable code.

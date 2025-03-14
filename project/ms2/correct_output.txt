@@ -1,0 +1,58 @@
+Milestone 2
+ 1- Run Test 1
+ 2- Run Test 2
+ 3- Final Milestone Application Demo
+ 0- Exit
+> 1
+   Test 1, Options Menu
+    1- Option A
+    2- Option B
+    3- Option C
+    4- Option D
+    5- Option E
+    6- Option F
+    7- Option G
+    8- Option H
+    9- Option I
+   10- Option J
+   11- Option K
+   12- Option L
+   13- Option M
+   14- Option N
+   15- Option O
+   16- Option P
+   17- Option Q
+   18- Option R
+   19- Option S
+   20- Option T
+    0- Return
+   > 0
+Milestone 2
+ 1- Run Test 1
+ 2- Run Test 2
+ 3- Final Milestone Application Demo
+ 0- Exit
+> 2
+   Test 2, Selection test
+    1- Option 1
+    2- Option 2 with Submenu
+    3- Option 3
+    0- Return
+   > 2
+         1- Sub-option 1
+         2- Sub-option 2
+         0- Back to test 2
+        > 0
+   Test 2, Selection test
+    1- Option 1
+    2- Option 2 with Submenu
+    3- Option 3
+    0- Return
+   > 0
+Milestone 2
+ 1- Run Test 1
+ 2- Run Test 2
+ 3- Final Milestone Application Demo
+ 0- Exit
+> 0
+Have a good day!

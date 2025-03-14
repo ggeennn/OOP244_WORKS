@@ -8,8 +8,8 @@ In this project, you will build an application that enables waiters to take cust
 
 | Milestone | Revision | Comments | Walkthrough |
 |-----------|:--------:|:--------:|:-----------:|
-| [MS1](#milestone-1) | V0.9 | | |
-| [MS2](#milestone-2) | | | |
+| [MS1](#milestone-1) | V1.0 | | [video](https://youtu.be/lqJI57TdSpA) |
+| [MS2](#milestone-2) | V1.0 | | [video](https://youtu.be/lymXEXn6eh0) |
 | [MS3](#milestone-3) | | | |
 | [MS4](#milestone-4) |  | | |
 | [MS5](#milestone-5-the-final-milestone) |  | | |
@@ -128,10 +128,10 @@ All code must be compiled using the following command on **Matrix**:
 g++ -Wall -std=c++11 -g -o ws file1.cpp file2.cpp ...
 ```
 
-- `-Wall` → Reports all warnings.  
-- `-std=c++11` → Uses the C++11 standard.  
-- `-g` → Includes debugging symbols for better `valgrind` reports.  
-- `-o ws` → Names the compiled application `ws`.  
+- `-Wall`: Reports all warnings.  
+- `-std=c++11`: Uses the C++11 standard.  
+- `-g`: Includes debugging symbols for better `valgrind` reports.  
+- `-o ws`: Names the compiled application `ws`.  
 
 ### **Checking for Memory Leaks**
 To check for possible memory leaks, run:
@@ -358,10 +358,258 @@ and follow the instructions.
 
 # Milestone 2
 
-## Menu Class
+## Menu class
+
+Add a class to the `Menu` module called `Menu`. The `Menu` class must own the `MenuItem` class as part of its composition. To enforce this, the `MenuItem` class should only be accessible by the `Menu` class.
+
+To achieve this, remove the `public` keyword from the `MenuItem` class and make it fully private.
+
+Forward declare the `Menu` class above the `MenuItem` class and add `Menu` as a friend of the `MenuItem` class.
+
+With this change, only the `Menu` class can instantiate `MenuItem` objects.
+
+### Attributes
+- Add three integer (preferably unsigned) attributes to track:
+  - The **indentation number and size** for `MenuItem` objects.
+  - The **number of `MenuItem` objects** currently held in the `Menu`.
+
+- Add three `MenuItem` attributes for the **title**, **exit option**, and **selection entry prompt** of the `Menu`. Since `MenuItem` does not have a default constructor, these attributes must be initialized in the **member initializer list**. Ensure that the initialization order matches the order in which the attributes are declared in the `Menu` class, as some compilers may issue warnings if the order is inconsistent.  
+   > The row number of the `exit option` should be set to zero.
+
+- Add an **array** of `MenuItem` pointers, sized according to the constant `MaximumNumberOfMenuItems`. When adding MenuItem objects, they should be dynamically allocated and stored in this array. Ensure that the number of `MenuItem` objects does not exceed the size of the array.
+
+### Constructor
+Create a `Menu` constructor with the following four arguments:
+
+- A C-string for the **title**.
+- A C-string for the **exit option content**, defaulted to `"Exit"`.
+- An **indentation number**, defaulted to `0`.
+- An **indentation size**, defaulted to `3`.
+
+Initialize the corresponding attributes with these arguments and initialize the selection entry prompt `MenuItem` to `"> "`.
+
+Set all elements of the pointer array to `nullptr`.
+
+---
+
+### `<<` Operator Overload for `Menu`
+
+Implement the `<<` operator overload for the `Menu` class to dynamically add new `MenuItem` objects.
+
+#### Requirements:
+- The operator should take a `const char*` representing the `content` of a new `MenuItem`.
+- Check if the current number of `MenuItem` objects is less than `MaximumNumberOfMenuItems` before adding a new item.
+- If the condition is met:
+   - Dynamically create a new `MenuItem` using the provided `menuItem` content, the current indentation level, the indentation size, and the row number (calculated as `number-of-menu-items + 1`).
+   - Store the new `MenuItem` pointer in the `MenuItem` pointer array.
+   - Increment `number-of-menu-items` to reflect the addition.
+- Return `*this` to allow chaining of the operator.
+
+#### Constraints:
+- Ensure that `number-of-menu-items` does not exceed `MaximumNumberOfMenuItems`. If the array is full, the operation should not add a new item or increment `number-of-menu-items`.
+
+This operator overload enables the use of the `<<` operator to add `MenuItem` objects to a `Menu`, enhancing readability and simplifying the process of building a menu.
+
+---
+
+### Rule of Three
+Copying and assignment of a `Menu` object should be explicitly prevented. While this is inherently enforced by making `MenuItem` attributes private to the `Menu` class, explicitly deleting the copy constructor and copy assignment operator in comments enhances code maintainability and clarity.
+
+Implement a destructor that iterates through the array of `MenuItem` pointers, deletes each non-null pointer, and sets them to `nullptr` to safely release allocated memory.
+
+---
+
+### `select` Method 
+```c++
+size_t select() const;
+```
+Implement the `select` method for the `Menu` class to perform the following actions:
+
+#### Requirements:
+- **Display the Title**: If the `Menu` object has a title, display it first.
+- **Display `Menu` Items**: Iterate through all `MenuItem` objects stored in the `Menu` and display them one by one.
+- **Display the Exit Option**: Display the `exit option MenuItem` after listing the main `MenuItem` objects.
+- **Display the Selection Prompt**: Display the `selection prompt` `MenuItem` to indicate that user input is expected.
+- **Return the User's Selection**: Obtain and return a validated integer input representing the user's choice. The input should only be valid if it falls within the range of `0` (representing the exit option) to the number of `MenuItem` objects currently in the `Menu`. See the `getInt` function suggestion below.
+
+#### Expected Outcome:
+- The method should output the full menu structure in a readable format and handle user selection.
+- It should ensure that the selection is a valid integer within the specified range before returning it.
+
+#### Sample Output:
+Two example menus:  
+The first has zero indentation, the second has one level of indentation.
+```text
+Seneca Restaurant
+ 1- Order
+ 2- Print Bill
+ 3- Start a New Bill
+ 4- List Foods
+ 5- List Drinks
+ 0- End Program
+> 1
+   Order Menu
+    1- Food
+    2- Drink
+    0- Back to main menu
+   >
+```
+
+---
+
+### Insertion Operator Overload into `ostream`
+Create an `operator<<` overload for the `Menu` class:
+```c++
+size_t operator<<(std::ostream& ostr, const Menu& m);
+```
+#### Requirements:
+- The operator should handle output to an `ostream`.
+- When `ostr` is `cout` (check their address to confirm), the operator should invoke the `select()` method of the `Menu` class and return the user's selection.
+- The return value should be the result of the `select()` method, representing the user's choice from the menu.
+- If the `ostream` is not `cout`, do not perform the selection operation; simply return `0`.
+
+#### Outcome:
+- The operator should display the `Menu` on `cout` and allow the user to make a selection, returning the valid selection as a `size_t`.
+- Ensure that the operator returns `0` when used with any `ostream` other than `cout`.
+
+> **Note:** Unlike typical insertion overloads, this operator does **not** return an `ostream` reference.
+
+---
+
+## `Utils` Module Foolproof Entry Functions
+> The following will be tested in **milestone 5**.
+
+To ensure foolproof data entry, implement two functions in the `Utils` module and use them within your `select` method.
+
+---
+
+### `getInt`
+```c++
+int getInt();
+```
+Create a method in the `Utils` class to handle integer input with the following requirements:
+
+#### Requirements:
+- **Prompt for Valid Input**: Continuously prompt the user until a valid integer is entered.
+- **Handle Empty Input**: If the user presses Enter without typing anything, display:
+   ```text
+   You must enter a value:
+   ```
+- **Validate Integer Input**: If the user enters non-integer data, display:
+   ```text
+   Invalid integer:
+   ```
+   Clear the error state before prompting again.
+- **Check for Trailing Characters**: If extra characters follow the integer, display:
+   ```text
+   Only an integer please:
+   ```
+   Prompt the user again.
+- **Clear Input Buffer**: After processing the input, clear any remaining characters to prepare for the next entry.
+
+#### Outcome:
+The method should only return a valid integer after ensuring proper validation.
+
+---
+
+### `getInt(min, max)`
+```c++
+int getInt(int min, int max);
+```
+#### Requirements:
+- **Range Validation**: Prompt the user until a valid integer within the range `[min, max]` is entered.
+- **Use `getInt()`**: Utilize the basic validation logic from `getInt()`.
+- **Handle Out-of-Range Values**: If input is outside the range, display:
+   ```text
+   Invalid value: [min <= value <= max], try again:
+   ```
+   Replace `min` and `max` with the respective values.
+
+#### Outcome:
+The function should return a valid integer within the specified range after enforcing all validation rules.
+
+
+## ms2 tester program
+
+[ms2.cpp](ms2/ms2.cpp)
+
+### Sample Execution
+
+[correct_output.txt](ms2/correct_output.txt)
+
+### Data Entry for ms2
+```text
+1<ENTER>
+0<ENTER>
+2<ENTER>
+2<ENTER>
+0<ENTER>
+0<ENTER>
+0<ENTER>
+```
+
+### Data Entry for foolproof entry
+> Will be tested in milstone 6
+```text
+<ENTER>
+abc<ENTER>
+123abc<ENTER>
+-1<ENTER>
+4<ENTER>
+0<ENTER>
+```
+> Also try running option 3 for the Final Milestone Application Demo and see how it works.
+### Foolproof entry output sample
+```text
+Milestone 2
+ 1- Run Test 1
+ 2- Run Test 2
+ 3- Final Milestone Application Demo
+ 0- Exit
+>
+You must enter a value: abc
+Invalid integer: 123abc
+Only an integer please: -1
+Invalid value: [0<= value <=3], try again: 4
+Invalid value: [0<= value <=3], try again: 0
+Have a good day!
+```
+
+
+## MS2 Submission 
+
+> If you would like to successfully complete the project and be on time, **start early** and try to meet all the due dates of the milestones.
+
+
+Upload your source code and the tester program (**Utils.cpp, Utils.h, Menu.h , Menu.cpp and ms2.cpp**) to your `matrix` account. Compile and run your code using the `g++` compiler [as shown in the introduction](#compiling-and-testing-your-program) and make sure that everything works properly.
+
+Then, run the following command from your account (replace `profname.proflastname` with your professor’s Seneca userid):
+```
+~profname.proflastname/submit 2??/prj/m2
+```
+and follow the instructions.
+
+- *2??* is replaced with your subject code
+
+
+### The submit program's options:
+```bash
+~prof_name.prof_lastname/submit DeliverableName [-submission options]<ENTER>
+[-submission option] acceptable values:
+  "-due":
+       Shows due dates only
+       This option cannot be used in combination with any other option.
+  "-skip_spaces":
+       Do the submission regardless of incorrect horizontal spacing.
+       This option may attract penalty.
+  "-skip_blank_lines":
+       Do the submission regardless of incorrect vertical spacing.
+       This option may attract penalty.
+  "-feedback":
+       Check the program execution without submission.
+```
 
 ## [Back to milestones](#milestones)
-
 
 # Milestone 3: 
 ## Billable, Food, and Drink Modules
