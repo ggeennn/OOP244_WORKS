@@ -1,19 +1,18 @@
 /***********************************************************************
 // OOP244 Project, Utils Module
 //
-// File	Utils.h
-// Version 0.1
+// File	Utils.cpp
+// Version 0.2
 // started by Fardad
 // Description
 // utility function to be used in the project
 // Revision History
 // -----------------------------------------------------------
 // Name            Date            Reason
-//
+//Yicheng Wang    2025/3/14       getInt method implemented
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #include <iostream>
-#include <string>
 #include "Utils.h"
 using namespace std;
 namespace seneca {
@@ -56,30 +55,37 @@ namespace seneca {
       return cstring && *cstring == 0;
    }
 
-   int Utils::getInt() {  //using cin.peek()
+   int Utils::getInt() {
       int value;
       bool valid;
       do {
          valid = true;
-         std::string input;
-         std::getline(std::cin, input);
-         
-         if (input.empty()) {
+
+         if (std::cin.peek() == '\n') {
             std::cout << "You must enter a value: ";
+            std::cin.ignore();  // 清除换行符
             valid = false;
             continue;
          }
+
+
+         std::cin >> value;
          
-         try {
-            size_t pos;
-            value = std::stoi(input, &pos);
-            if (pos != input.length()) {
-               throw std::invalid_argument("Trailing characters");
-            }
-         } catch (...) {
-            std::cout << (input.find_first_not_of("0123456789") != std::string::npos 
-                         ? "Invalid integer: " : "Only an integer please: ");
+
+         if (std::cin.fail()) {
+            std::cin.clear();  
+            std::cin.ignore(1000, '\n');
+            std::cout << "Invalid integer: ";
             valid = false;
+         }
+         else if (std::cin.peek() != '\n' && std::cin.peek() != EOF) {
+            std::cin.ignore(1000, '\n');
+            std::cout << "Only an integer please: ";
+            valid = false;
+         }
+
+         else {
+            std::cin.ignore(1000, '\n');
          }
       } while (!valid);
       return value;

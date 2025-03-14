@@ -2,14 +2,14 @@
 // OOP244 Project, Utils Module
 //
 // File	Utils.h
-// Version 0.1
+// Version 0.2
 // started by Fardad 
 // Description
 // utility function to be used in the project
 // Revision History
 // -----------------------------------------------------------
 // Name            Date            Reason
-//
+//Yicheng Wang    2025/3/14       getInt method implemented
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #ifndef SENECA_UTILS_H

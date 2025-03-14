@@ -1,12 +1,13 @@
 /* Citation and Sources...
-Final Project Milestone 1 
+Final Project Milestone 2 
 Module: Menu
 Filename: Menu.cpp
-Version 1.0
+Version 1.1
 Author: Yicheng Wang
 Revision History
 -----------------------------------------------------------
 Date      Reason
+2025/3/15  Menu Module implemented
 -----------------------------------------------------------
 I have done all the coding by myself and only copied the code 
 that my professor provided to complete my workshops and assignments.
