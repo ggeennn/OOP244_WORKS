@@ -1,0 +1,14 @@
+/**
+ * I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+ * Name :	Yicheng Wang
+ * Email :	ywang841@myseneca.ca
+ * Student ID :	150868206
+ * Date :	2025/3/18
+ */
+# Reflection on Workshop #8: Virtual Functions and Abstract Base Classes
+
+In completing this workshop, I deepened my understanding of key C++ concepts such as **pure virtual functions**, **abstract base classes**, and **polymorphism**. By implementing the `Shape`, `LblShape`, `Line`, and `Rectangle` classes, I learned how to design a class hierarchy where base classes define interfaces and derived classes provide specific implementations. 
+
+One challenge I faced was ensuring proper memory management in `LblShape` when handling dynamically allocated labels. Using `Utils::alocpy` helped me safely allocate and copy strings, avoiding memory leaks. Additionally, I practiced overriding virtual functions like `draw` and `getSpecs` to achieve polymorphic behavior.
+
+This workshop reinforced the importance of **inheritance** and **virtual functions** in creating flexible and reusable code. I also gained experience in using **stream manipulators** like `std::setw` and `std::setfill` to format output. Overall, this project enhanced my ability to design and implement object-oriented solutions in C++.

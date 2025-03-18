@@ -1,30 +1,32 @@
+/**
+ * I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+ * Name :	Yicheng Wang
+ * Email :	ywang841@myseneca.ca
+ * Student ID :	150868206
+ * Date :	2025/3/18
+ */
 #ifndef SENECA_LABELEDSHAPE_H
 #define SENECA_LABELEDSHAPE_H
-
+#include "Shape.h"
+#include "Utils.h"
 
 namespace seneca {
+    class LblShape : public Shape {
+        char* m_label{}; 
+    protected:
+        const char* label() const { return m_label;} 
+    public:
 
-   class LblShape      {
-      // Dynamically allocated label for the shape
-   protected:
-      // Returns the label string for derived classes to access
+        LblShape() = default;
+        LblShape(const char* label);
 
-   public:
-      // Default constructor
-     
+        LblShape(const LblShape&) = delete;
+        LblShape& operator=(const LblShape&) = delete;
 
-      // Constructor with label initialization
-      
+        void getSpecs(std::istream& is) override;
 
-      // Copy constructor and assignment operator are deleted to prevent copying
-      
-
-      // Reads label specifications from input stream
-      
-
-      // Destructor to release dynamically allocated memory
-     
-   };
+        virtual ~LblShape();
+    };
 }
 
 #endif // !SENECA_LABELEDSHAPE_H
