@@ -30,9 +30,9 @@ namespace seneca {
 
     bool Drink::order() {
         Menu sizeMenu("Drink Size Selection", "Back", 3);
-        sizeMenu << "Small" << "Medium" << "Large" << "Extra Large";
+        sizeMenu << "Small" << "Medium" << "Larg" << "Extra Large"; //typo
         
-        int choice =static_cast<int>(sizeMenu.select());
+        size_t choice = std::cout <<sizeMenu;
         if(choice == 0) {
             m_size = '\0';
             return false;

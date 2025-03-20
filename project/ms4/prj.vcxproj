@@ -141,7 +141,7 @@
     <ClCompile Include="Drink.cpp" />
     <ClCompile Include="Food.cpp" />
     <ClCompile Include="Menu.cpp" />
-    <ClCompile Include="main.cpp" />
+    <ClCompile Include="ms4.cpp" />
     <ClCompile Include="Ordering.cpp" />
     <ClCompile Include="Utils.cpp" />
   </ItemGroup>

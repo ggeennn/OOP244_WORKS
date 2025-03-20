@@ -7,14 +7,13 @@
 #include "Menu.h"
 
 namespace seneca {
-    // 拷贝构造函数
+
 Food::Food(const Food& other) : Billable(other) {
     m_ordered = other.m_ordered;
     m_child = other.m_child;
     ut.alocpy(m_customize, other.m_customize);
 }
 
-// 拷贝赋值操作符
 Food& Food::operator=(const Food& other) {
     if (this != &other) {
         Billable::operator=(other);
@@ -34,19 +33,16 @@ Food& Food::operator=(const Food& other) {
     }
 
     std::ostream& Food::print(std::ostream& ostr) const {
-        // 格式化输出逻辑
         ostr.width(28);
         ostr.fill('.');
         ostr << std::left << (m_name ? m_name : ".....");
         
-        //ostr << " ";
         if(ordered()) {
             ostr << (m_child ? "Child" : "Adult");
         } else {
             ostr << ".....";
         }
         
-        //ostr << " ";
         ostr.width(7);
         ostr.fill(' ');
         ostr << std::right << std::fixed << std::setprecision(2) << this->price();
@@ -61,7 +57,7 @@ Food& Food::operator=(const Food& other) {
         Menu portionMenu("Food Size Selection", "Back", 3);
         portionMenu << "Adult" << "Child";
         
-        int choice = static_cast<int>(portionMenu.select());
+        size_t choice = std::cout <<portionMenu;
         if(choice == 0) {
             m_ordered = false;
             ut.alocpy(m_customize, nullptr);
