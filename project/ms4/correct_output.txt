@@ -1,0 +1,93 @@
+Testing Invalid Ordering if data file don't exist!
+Passed!
+Testing list foods..................................
+List Of Avaiable Meals
+========================================
+Hamberger........................  12.00
+Cheese Burger....................  13.50
+Veggie Burger....................  14.50
+Hot Dog..........................   6.00
+Pasta with Tomato sauce..........  15.50
+Fries............................   5.00
+Poutine with beef................   7.00
+Poutine..........................   6.00
+========================================
+Testing list drinks.................................
+List Of Avaiable Drinks
+========================================
+Pepsi............................   4.50
+Orange Juice.....................   3.50
+Coffee...........................   5.00
+========================================
+Testing order food..................................
+Enter:
+ 1
+ 1
+ abc
+ ---->
+      Food Menu
+       1- Hamberger
+       2- Cheese Burger
+       3- Veggie Burger
+       4- Hot Dog
+       5- Pasta with Tomato sauce
+       6- Fries
+       7- Poutine with beef
+       8- Poutine
+       0- Back to Order
+      > 1
+         Food Size Selection
+          1- Adult
+          2- Child
+          0- Back
+         > 1
+Special instructions
+> abc
+Passed!
+Testing order drink.................................
+Enter:
+ 1
+ 1
+ ---->
+      Drink Menu
+       1- Pepsi
+       2- Orange Juice
+       3- Coffee
+       0- Back to Order
+      > 1
+         Drink Size Selection
+          1- Small
+          2- Medium
+          3- Larg
+          4- Extra Large
+          0- Back
+         > 1
+Passed!
+Testing print bill on screen.........................
+Bill # 001 =============================
+Hamberger...................Adult  12.00 >> abc
+Pepsi.......................SML..   2.25
+                     Total:        14.25
+                     Tax:           1.85
+                     Total+Tax:    16.10
+========================================
+Testing saving bill in a file........................
+Bill # 001 =============================
+Hamberger...................Adult  12.00
+Pepsi.......................SML..   2.25
+                     Total:        14.25
+                     Tax:           1.85
+                     Total+Tax:    16.10
+========================================
+testing hassUnsavedBill()............................
+Passed hassUnsavedBill()!
+testing restBill()...................................
+Saved bill number 1
+Starting bill number 2
+Bill # 001 =============================
+Hamberger...................Adult  12.00
+Pepsi.......................SML..   2.25
+                     Total:        14.25
+                     Tax:           1.85
+                     Total+Tax:    16.10
+========================================

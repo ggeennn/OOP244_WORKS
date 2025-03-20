@@ -1,0 +1,153 @@
+Testing Drink Class=============================
+Drink Tester!
+Pepsi
+Orange Juice
+Pepsi............................   4.50
+Orange Juice.....................   3.50
+Enter the folowing:
+1<ENTER>
+2<ENTER>
+3<ENTER>
+4<ENTER>
+0<ENTER>
+=========>
+         Drink Size Selection
+          1- Small
+          2- Medium
+          3- Larg
+          4- Extra Large
+          0- Back
+         > 1
+Orange Juice................SML..   1.75
+         Drink Size Selection
+          1- Small
+          2- Medium
+          3- Larg
+          4- Extra Large
+          0- Back
+         > 2
+Orange Juice................MID..   2.62
+         Drink Size Selection
+          1- Small
+          2- Medium
+          3- Larg
+          4- Extra Large
+          0- Back
+         > 3
+Orange Juice................LRG..   3.50
+         Drink Size Selection
+          1- Small
+          2- Medium
+          3- Larg
+          4- Extra Large
+          0- Back
+         > 4
+Orange Juice................XLR..   5.25
+         Drink Size Selection
+          1- Small
+          2- Medium
+          3- Larg
+          4- Extra Large
+          0- Back
+         > 0
+Total = 13.12
+Enter the folowing:
+2<ENTER>
+=========>
+         Drink Size Selection
+          1- Small
+          2- Medium
+          3- Larg
+          4- Extra Large
+          0- Back
+         > 2
+Orange Juice................MID..   2.62
+Total = 15.75
+
+Checking Virtuals: 
+Coffee...........................   5.00
+Price: 5.00
+Not Ordered
+Enter the following:
+2<ENTER>
+<ENTER>(only for food)
+=========>
+         Drink Size Selection
+          1- Small
+          2- Medium
+          3- Larg
+          4- Extra Large
+          0- Back
+         > 2
+Ordered
+Testing Food Class=============================
+Food Tester!
+Hamberger
+Cheese Burger
+Hamberger........................  12.00
+Cheese Burger....................  13.50
+Enter the folowing:
+1<ENTER>
+well done
+2<ENTER>
+<ENTER>
+0<ENTER>
+=========>
+         Food Size Selection
+          1- Adult
+          2- Child
+          0- Back
+         > 1
+Special instructions
+> well done
+Cheese Burger...............Adult  13.50 >> well done
+         Food Size Selection
+          1- Adult
+          2- Child
+          0- Back
+         > 2
+Special instructions
+> 
+Cheese Burger...............Child   6.75
+         Food Size Selection
+          1- Adult
+          2- Child
+          0- Back
+         > 0
+Total = 20.25
+Enter the folowing:
+2<ENTER>
+<ENTER>
+=========>
+         Food Size Selection
+          1- Adult
+          2- Child
+          0- Back
+         > 2
+Special instructions
+> 
+Cheese Burger...............Child   6.75
+Total = 27.00
+
+Checking Virtuals: 
+Poutine..........................   6.00
+Price: 6.00
+Not Ordered
+Enter the following:
+2<ENTER>
+<ENTER>(only for food)
+=========>
+         Food Size Selection
+          1- Adult
+          2- Child
+          0- Back
+         > 2
+Special instructions
+> 
+Ordered
+drinkout.csv: ==============>
+Coffee...........................   5.00
+<==============
+foodout.csv: ==============>
+Poutine..........................   6.00
+<==============

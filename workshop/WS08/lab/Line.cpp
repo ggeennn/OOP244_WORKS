@@ -8,7 +8,7 @@ namespace seneca {
     Line::Line() : LblShape(), m_length(0) {}
 
     Line::Line(const char* label, int length) : LblShape(label) {
-        m_length = (length > strlen(label)) 
+        m_length = (length > static_cast<int>(strlen(label))) 
                  ? length : strlen(label);
     }
 
