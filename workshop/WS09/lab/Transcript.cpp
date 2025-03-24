@@ -10,18 +10,18 @@
 
 namespace seneca {
     Transcript::Transcript(const char* name, size_t stno) {
-        ut.alocpy(m_studentName, name); // 使用Utils工具安全分配内存
+        ut.alocpy(m_studentName, name); 
         m_studentNumber = stno;
     }
 
-    Transcript::Transcript(const Transcript& other) : Marks(other) { // 调用基类拷贝构造
+    Transcript::Transcript(const Transcript& other) : Marks(other) { 
         ut.alocpy(m_studentName, other.m_studentName);
         m_studentNumber = other.m_studentNumber;
     }
 
     Transcript& Transcript::operator=(const Transcript& other) {
-        if (this != &other) { // 防止自赋值
-            Marks::operator=(other); // 调用基类赋值运算符
+        if (this != &other) { 
+            Marks::operator=(other); 
             ut.alocpy(m_studentName, other.m_studentName);
             m_studentNumber = other.m_studentNumber;
         }
@@ -29,13 +29,13 @@ namespace seneca {
     }
 
     Transcript::~Transcript() {
-        delete[] m_studentName; // 释放动态内存
+        delete[] m_studentName; 
     }
 
     std::ostream& Transcript::display(std::ostream& ostr) const {
         ostr << m_studentName << " (" << m_studentNumber << ")" << std::endl;
         ostr << "--------------------------------------------------------------------------" << std::endl;
-        Marks::display(ostr); // 调用基类显示方法
+        Marks::display(ostr); 
         return ostr;
     }
 }
