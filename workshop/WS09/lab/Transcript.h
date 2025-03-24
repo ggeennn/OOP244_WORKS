@@ -18,16 +18,20 @@
 namespace seneca {
    class Transcript :
       public Marks {
-      // character pointer student name
-      
-      // unsigned integer or size_t student number
+      char* m_studentName{};  // 学生姓名（动态内存）
+      size_t m_studentNumber{}; // 学生编号
 
    public:
       // Constructor
+      Transcript(const char* name, size_t stno);
 
       // Rule of Three
+      Transcript(const Transcript& other);       // 拷贝构造函数
+      Transcript& operator=(const Transcript& other); // 拷贝赋值运算符
+      ~Transcript();                              // 析构函数
 
       // Destructor
+      std::ostream& display(std::ostream& ostr) const override; // 重写display方法
    };
 }
 #endif // !SENECA_TRANSCRIPT_H

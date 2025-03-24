@@ -1,0 +1,6 @@
+
+
+In completing this workshop, I gained a deeper understanding of dynamic memory management and inheritance in C++. 
+Implementing the `Transcript` class required careful handling of resources, particularly in the Rule of Three (copy constructor, copy assignment operator, and destructor). I learned how to properly allocate and deallocate memory using `Utils::alocpy` to avoid memory leaks. 
+Overriding the `display` function in the derived class reinforced my knowledge of polymorphism. Testing with `valgrind` ensured my implementation was free of memory errors. 
+This workshop enhanced my skills in resource management and class design, which are crucial for future C++ projects.
