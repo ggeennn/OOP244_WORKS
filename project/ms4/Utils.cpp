@@ -104,34 +104,14 @@ namespace seneca {
    }
 
 char* Utils::makeBillFileName(char* filename, size_t billNo) {
-   // int i = 0;
-   // // 设置文件名前缀
-   // while ("bill_"[i]) {
-   //    filename[i] = "bill_"[i++];
-   // }
-   // // 将账单号转换为字符串
-   // int len = i;
-   // if (billNo == 0) {
-   //    filename[len++] = '0';  // 处理 billNo = 0 的情况
-   // } else {
-   //    while (billNo > 0) {
-   //       filename[len++] = (billNo % 10) + '0';  // 填充账单号
-   //       billNo /= 10;
-   //    }
-   // }
-   // // 在文件名末尾附加 .txt
-   // filename[len++] = '.';
-   // filename[len++] = 't';
-   // filename[len++] = 'x';
-   // filename[len++] = 't';
-   // filename[len] = '\0';  // 字符串终止符
-   // return filename;
+
    size_t temp = billNo;
    int cnt = 5, i = 0;
    int length = 0;
    // set name prefix
    while ("bill_"[i]) {
-      filename[i] = "bill_"[i++];
+      filename[i] = "bill_"[i];
+      i++;
    }
    // Calculate the number of digits
    do {

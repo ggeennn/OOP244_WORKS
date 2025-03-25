@@ -12,11 +12,18 @@ namespace seneca {
         m_foodCnt = countRecords(foodsFile);
         m_drinkCnt = countRecords(drinksFile);
         
-        m_foods = new Food[m_foodCnt];
-        m_drinks = new Drink[m_drinkCnt];
-        
         std::ifstream foodFile(foodsFile);
         std::ifstream drinkFile(drinksFile);
+        
+        if (!foodFile || !drinkFile) {
+            m_foods = nullptr;
+            m_drinks = nullptr;
+            m_foodCnt = m_drinkCnt = 0;
+            return;
+        }
+        
+        m_foods = new Food[m_foodCnt];
+        m_drinks = new Drink[m_drinkCnt];
         
         bool valid = true;
         for(size_t i = 0; valid && i < m_foodCnt; i++) {
