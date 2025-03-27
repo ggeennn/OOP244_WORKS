@@ -10,7 +10,7 @@ In this project, you will build an application that enables waiters to take cust
 |-----------|:--------:|:--------:|:-----------:|
 | [MS1](#milestone-1) | V1.0 | | [video](https://youtu.be/lqJI57TdSpA) |
 | [MS2](#milestone-2) | V1.1 | ms2.cpp had a typo and it is fixed | [video](https://youtu.be/lymXEXn6eh0) |
-| [MS3](#milestone-3) | V1.0 | | |
+| [MS3](#milestone-3) | V1.0 | | [video](https://youtu.be/P5y-vpk37mU)|
 | [MS4](#milestone-4) | V0.9 | | |
 | [MS5](#milestone-5-the-final-milestone) | V0.9 | | |
 
@@ -854,9 +854,10 @@ char* makeBillFileName(char* filename, size_t billNo) {
    } while (temp > 0);
    length = cnt;
    // Convert each digit to character from the end
-   while (billNo > 0) {
-      filename[--cnt] = (billNo % 10) + '0';
-      billNo /= 10;
+   temp = billNo;
+   while (temp > 0) {
+      filename[--cnt] = (temp % 10) + '0';
+      temp /= 10;
    }
    // Handle the case when billNo is 0
    if (!billNo) {
@@ -1352,10 +1353,6 @@ The program should continue prompting the user until a valid integer within the 
 # MS5 Submission
 
 ## MS51 Submission  
-
-**List Food and Drink**  
-
-> :warning: **IMPORTANT:** In Milestone 4, the `listDrinks()` method in the `Ordering` class was mistakenly written as `"ListDrinks()"` with an uppercase "L". This typo has been corrected in Milestone 5. Before submission, **rename it to `listDrinks` with a lowercase "L"**.  
 
 ---
 

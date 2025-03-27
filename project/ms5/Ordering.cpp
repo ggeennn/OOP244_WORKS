@@ -52,7 +52,7 @@ namespace seneca {
 
     void Ordering::printBillTitle(std::ostream& ostr) const {
         ostr << "Bill # " << std::setw(3) << std::setfill('0') << m_billNo
-             << " " << std::string(29, '=') <<std::setfill(' ') << '\n';
+             << " " << std::string(29, '=')<<std::setfill(' ')  << '\n';
     }
 
     void Ordering::printTotals(std::ostream& ostr, double total) const {
