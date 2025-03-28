@@ -1,3 +1,22 @@
+/* Citation and Sources...
+Final Project Milestone 5 
+Module: main
+Filename: main.cpp
+Version 1.1
+Author: Yicheng Wang
+Revision History
+-----------------------------------------------------------
+Date      Reason
+2025/3/28  main Module implemented
+-----------------------------------------------------------
+I have done all the coding by myself and only copied the code 
+that my professor provided to complete my workshops and assignments.
+-----------------------------------------------------------
+OR
+-----------------------------------------------------------
+Write exactly which part of the code is given to you as help and 
+who gave it to you, or from what source you acquired it.
+-----------------------------------------------------------*/
 #include <iostream>
 #include "Ordering.h"
 #include "Utils.h"
@@ -9,7 +28,6 @@ using namespace seneca;
 int main() {
     Ordering ordering("drinks.csv", "foods.csv");
     
-    // 检查数据加载是否成功
     if (!ordering) {
         cout << "Failed to open data files or the data files are corrupted!\n";
         return 1;

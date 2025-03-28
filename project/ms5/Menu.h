@@ -1,7 +1,7 @@
 /* Citation and Sources...
-Final Project Milestone 2 
+Final Project Milestone 5
 Module: Menu
-Filename: Menu.cpp
+Filename: Menu.h
 Version 1.1
 Author: Yicheng Wang
 Revision History
@@ -27,11 +27,11 @@ namespace seneca {
     class Menu;  // Forward declaration
 
     class MenuItem {
-        char* m_content;
-        size_t m_indentation;
-        size_t m_indentationSize;
-        int m_rowNumber;
-        bool m_isValid;
+        char* m_content{};
+        size_t m_indentation{};
+        size_t m_indentationSize{};
+        int m_rowNumber{};
+        bool m_isValid{};
 
         void setEmpty();
         MenuItem(const char* content = nullptr, size_t indentation = 0, 
@@ -50,8 +50,8 @@ namespace seneca {
 
     class Menu {
         MenuItem m_title{};
-        MenuItem m_exit;
-        MenuItem m_prompt;
+        MenuItem m_exit{};
+        MenuItem m_prompt{};
         MenuItem* m_items[MaximumNumberOfMenuItems]{};
         size_t m_indent = 0;
         size_t m_indentSize = 3;

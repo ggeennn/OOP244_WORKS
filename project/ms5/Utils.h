@@ -10,6 +10,7 @@
 // -----------------------------------------------------------
 // Name            Date            Reason
 //Yicheng Wang    2025/3/14       getInt method implemented
+//Yicheng Wang    2025/3/28       makeBillFileName method modified
 /////////////////////////////////////////////////////////////////
 ***********************************************************************/
 #ifndef SENECA_UTILS_H
