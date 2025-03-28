@@ -21,7 +21,6 @@ who gave it to you, or from what source you acquired it.
 #include <iomanip>
 #include <fstream> 
 #include "Ordering.h"
-#include "Menu.h"
 #include "Utils.h" 
 
 
@@ -96,57 +95,19 @@ namespace seneca {
     }
 
     void Ordering::listFoods() const {
-        std::cout << "List Of Avaiable Meals\n";
-        std::cout << std::string(40, '=') << '\n';
-        for(size_t i = 0; i < m_foodCnt; i++) {
-            m_foods[i].print(std::cout) << '\n';
-        }
-        std::cout << std::string(40, '=') << '\n';
+        listItems("List Of Available Meals", m_foods, m_foodCnt);
     }
 
     void Ordering::ListDrinks() const {
-        std::cout << "List Of Avaiable Drinks\n";
-        std::cout << std::string(40, '=') << '\n';
-        for(size_t i = 0; i < m_drinkCnt; i++) {
-            m_drinks[i].print(std::cout) << '\n';
-        }
-        std::cout << std::string(40, '=') << '\n';
+        listItems("List Of Available Drinks", m_drinks, m_drinkCnt);
     }
 
     void Ordering::orderFood() {
-        Menu foodMenu("Food Menu", "Back to Order", 2);
-        for(size_t i = 0; i < m_foodCnt; i++) {
-            foodMenu << m_foods[i]; 
-        }
-        
-        size_t selection = std::cout<< foodMenu;  
-        if(selection > 0 && m_billCnt < MaximumNumberOfBillItems) {
-            m_billItems[m_billCnt] = new Food(m_foods[selection-1]);  
-            if(m_billItems[m_billCnt]->order()) {  
-                m_billCnt++;
-            } else {
-                delete m_billItems[m_billCnt];
-                m_billItems[m_billCnt] = nullptr;
-            }
-        }
+        orderItem("Food Menu", m_foods, m_foodCnt);
     }
 
     void Ordering::orderDrink() {
-        Menu drinkMenu("Drink Menu", "Back to Order", 2);
-        for(size_t i = 0; i < m_drinkCnt; i++) {
-            drinkMenu << m_drinks[i];
-        }
-        
-        size_t selection = std::cout<<drinkMenu;
-        if(selection > 0 && m_billCnt < MaximumNumberOfBillItems) {
-            m_billItems[m_billCnt] = new Drink(m_drinks[selection-1]); 
-            if(m_billItems[m_billCnt]->order()) {
-                m_billCnt++;
-            } else {
-                delete m_billItems[m_billCnt];
-                m_billItems[m_billCnt] = nullptr;
-            }
-        }
+        orderItem("Drink Menu", m_drinks, m_drinkCnt);
     }
 
     void Ordering::printBill(std::ostream& ostr) const {

@@ -23,6 +23,7 @@ who gave it to you, or from what source you acquired it.
 #include <iostream>
 #include "Food.h"
 #include "Drink.h"
+#include "Menu.h"
 #include "constants.h"
 
 namespace seneca
@@ -41,6 +42,12 @@ namespace seneca
         void printTotals(std::ostream &, double) const;
         size_t countRecords(const char *file) const;
 
+        template<typename T>
+        void listItems(const std::string& title, const T* items, size_t count) const;
+
+        template<typename T>
+        void orderItem(const std::string& menuTitle, const T* items, size_t itemCount);
+
     public:
         Ordering(const char *drinksFile, const char *foodsFile);
         ~Ordering();
@@ -55,6 +62,35 @@ namespace seneca
         void printBill(std::ostream &ostr = std::cout) const;
         void resetBill();
     };
+
+    template<typename T>
+    void Ordering::listItems(const std::string& title, const T* items, size_t count) const {
+        std::cout << title << "\n";
+        std::cout << std::string(40, '=') << '\n';
+        for(size_t i = 0; i < count; i++) {
+            items[i].print(std::cout) << '\n';
+        }
+        std::cout << std::string(40, '=') << '\n';
+    }
+
+    template<typename T>
+    void Ordering::orderItem(const std::string& menuTitle, const T* items, size_t itemCount) {
+        Menu itemMenu(menuTitle.c_str(), "Back to Order", 2);
+        for(size_t i = 0; i < itemCount; i++) {
+            itemMenu << items[i];
+        }
+        
+        size_t selection = std::cout << itemMenu;
+        if(selection > 0 && m_billCnt < MaximumNumberOfBillItems) {
+            m_billItems[m_billCnt] = new T(items[selection-1]);
+            if(m_billItems[m_billCnt]->order()) {
+                m_billCnt++;
+            } else {
+                delete m_billItems[m_billCnt];
+                m_billItems[m_billCnt] = nullptr;
+            }
+        }
+    }
 }
 
 #endif // ORDERING_H
