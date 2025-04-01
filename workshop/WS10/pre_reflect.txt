@@ -1,0 +1,69 @@
+# Workshop #10: Function Templates - Pre-reflection Summary
+
+## 已提供的代码 (Provided Code)
+1. Name类 (Name Class)
+   - 完整实现，包含头文件(Name.h)和实现文件(Name.cpp)
+   - 用于测试模板函数的用户自定义类型
+
+2. Utils模块 (Utils Module)
+   - 包含头文件(Utils.h)和实现文件(Utils.cpp)
+   - 主要用于Name类的内存管理支持
+   - 包含alocpy函数，作为dynaCopy模板的参考实现
+
+3. 测试程序 (Tester Program)
+   - main.cpp
+   - 用于测试dynaCopy模板函数的正确性
+
+4. 预期输出 (Expected Output)
+   - correct_output.txt
+   - 用于验证程序输出是否正确
+
+## 需要实现的代码 (Code to Implement)
+1. dynaCopy模块 (dynaCopy Module)
+   - 需要创建dynaCopy.h头文件
+   - 需要实现三个函数模板：
+     a) dynaCopy(T*& dest, const T* src, int size)
+        - 功能：动态复制数组
+        - 要求：处理任意类型数组，包括用户自定义类型
+     b) dynaCopy(T*& dest, const T* src)
+        - 功能：动态复制以nullptr结尾的数组
+        - 要求：处理任意类型数组
+     c) prnArray(const T* arr, int size)
+        - 功能：打印数组元素
+        - 要求：以逗号分隔，最后换行
+
+## 关键学习点 (Key Learning Points)
+1. 函数模板 (Function Templates)
+   - 理解模板参数的使用
+   - 掌握模板函数的定义和实现
+
+2. 动态内存管理 (Dynamic Memory Management)
+   - 正确使用new和delete
+   - 避免内存泄漏
+
+3. 通用编程 (Generic Programming)
+   - 使代码适用于多种数据类型
+   - 包括基本类型和用户自定义类型
+
+4. 模块化设计 (Modular Design)
+   - 创建独立的头文件模块
+   - 保持代码的复用性和可维护性
+
+## 测试要求 (Testing Requirements)
+1. 使用main.cpp测试所有功能
+2. 输出应与correct_output.txt完全匹配
+3. 使用valgrind检查内存泄漏
+
+## 注意事项 (Important Notes)
+1. 所有代码必须在seneca命名空间内实现
+2. 注意代码的通用性，确保适用于各种数据类型
+3. 提交前确保通过所有测试
+4. 注意代码风格和注释规范
+
+## 反思准备 (Reflection Preparation)
+在完成代码后，请思考以下问题：
+1. 在实现过程中遇到了哪些困难？如何解决的？
+2. 函数模板与普通函数相比有哪些优势？
+3. 动态内存管理需要注意哪些问题？
+4. 这个workshop如何帮助你理解通用编程的概念？
+5. 这些知识如何应用到未来的项目中？ 

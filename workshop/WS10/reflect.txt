@@ -1,0 +1,11 @@
+/**
+ * I have done all the coding by myself and only copied the code that my professor provided to complete my workshops and assignments.
+ * Name :	Yicheng Wang
+ * Email :	ywang841@myseneca.ca
+ * Student ID :	150868206
+ * Date :	2025/4/1
+ */
+In completing Workshop #10 on Function Templates, I gained valuable insights into generic programming and dynamic memory management. Implementing the `dynaCopy` module allowed me to understand how function templates can handle various data types, including primitive types and user-defined classes like `Name`. 
+The workshop emphasized the importance of proper memory allocation and deallocation to prevent leaks, which I practiced through the `new` and `delete` operators. 
+Testing with `main.cpp` and comparing outputs with `correct_output.txt` helped validate the correctness of my implementation. Using `valgrind` ensured my code was free from memory issues. 
+This workshop enhanced my skills in modular design and template usage, which are essential for writing reusable and efficient C++ code. These concepts will be invaluable in future projects requiring generic and memory-safe solutions. 
