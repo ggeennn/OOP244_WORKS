@@ -87,9 +87,16 @@ namespace seneca {
         std::ifstream inFile(file);
         if(inFile) {
             char ch;
+            bool hasContent = false;  // 标记当前行是否有内容
             while(inFile.get(ch)) {
-                if(ch == '\n') count++;
+                if(ch == '\n') {
+                    count++;
+                    hasContent = false;
+                } else {
+                    hasContent = true;
+                }
             }
+            if(hasContent) count++;  // 如果最后一行有内容但未换行，增加计数
         }
         return count;
     }

@@ -42,17 +42,20 @@ int main() {
     do {
         switch (mainMenu.select()) {
         case 1:{ // Order
-            size_t orderSelect=orderMenu.select();
-            switch (orderSelect) {
-               case 1:
-                ordering.orderFood();
-                break;
-               case 2:
-                ordering.orderDrink();
-                break;
-               case 0:
-                break;
-            }
+            size_t orderSelect = 0;
+            do {
+                orderSelect = orderMenu.select();
+                switch (orderSelect) {
+                   case 1:
+                    ordering.orderFood();
+                    break;
+                   case 2:
+                    ordering.orderDrink();
+                    break;
+                   case 0:
+                    break;
+                }
+            } while (orderSelect != 0);  // 保持循环直到选择返回
             break;
         }
             
